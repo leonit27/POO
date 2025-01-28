@@ -18,6 +18,11 @@ public class Banc {
         return numEntidad;
     }
 
+    public Set<Sucursal> getSucursals() {
+        return sucursals;
+    }
+
+    //Setter para añadir sucursales
     public void addSucursal(Sucursal sucursal) {
         this.sucursals.add(sucursal);
     }
