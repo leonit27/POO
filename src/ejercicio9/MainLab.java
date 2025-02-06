@@ -1,10 +1,5 @@
 package ejercicio9;
 
-import ejercicio7.Exemplar;
-
-import java.util.HashSet;
-import java.util.Set;
-
 public class MainLab {
     public static void main(String[] args) {
         Lab lab1 = new Lab("Laboratorio 1", "Taller 1", 30, "16:30", "Viernes", "José Gómez");
