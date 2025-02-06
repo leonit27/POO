@@ -14,21 +14,26 @@ public class JuegoDeDados {
     }
 
     //Hacemos una tirada
-    public void tirarDados() {
+    private void tirarDados() {
         dado1.setValorDado((int) (Math.random() * 6 + 1));
         dado2.setValorDado((int) (Math.random() * 6 + 1));
         dado3.setValorDado((int) (Math.random() * 6 + 1));
     }
 
-    public void main(String[] args) {
-        definirDados();
+    public static void main(String[] args) {
+        JuegoDeDados juegoDeDados = new JuegoDeDados();
+
+        juegoDeDados.definirDados();
 
         int tiradas = 0;
         do {
-            System.out.println(dado1.getValorDado() + " - " + dado2.getValorDado() + " - " + dado3.getValorDado());
-            if (dado1.getValorDado() == dado2.getValorDado() && dado1.getValorDado() == dado2.getValorDado()) {
-                System.out.println("Lo conseguiste en la tirada " + tiradas);
+            System.out.println(juegoDeDados.dado1.getValorDado() + " - " + juegoDeDados.dado2.getValorDado() + " - " + juegoDeDados.dado3.getValorDado());
+            if (juegoDeDados.dado1.getValorDado() == juegoDeDados.dado2.getValorDado() && juegoDeDados.dado1.getValorDado() == juegoDeDados.dado3.getValorDado()) {
+                System.out.println("Lo conseguiste en la tirada " + (tiradas + 1));
                 break;
+            } else {
+                tiradas++;
+                juegoDeDados.tirarDados();
             }
         } while(true);
     }
