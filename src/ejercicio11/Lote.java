@@ -8,6 +8,7 @@ public class Lote {
     private double precioSalida;
     private Set<Articulo> articulos;
     private Pujador pujador;
+    private Subasta subasta;
 
     //Constructor
     public Lote(int numero, double precioSalida) {
@@ -33,6 +34,10 @@ public class Lote {
         return pujador.getNombre();
     }
 
+    public String getSubasta() {
+        return "El día de la subasta es" + subasta.getDiaSubasta();
+    }
+
     //Setters
     public void setNumero(int numero) {
         this.numero = numero;
@@ -44,6 +49,10 @@ public class Lote {
 
     public void setPujador(Pujador pujador) {
         this.pujador = pujador;
+    }
+
+    public void setSubasta(Subasta subasta) {
+        this.subasta = subasta;
     }
 
     //Setter para añadir articulos
