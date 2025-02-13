@@ -5,30 +5,37 @@ import java.util.Set;
 
 public class Pujador {
     private String nombre;
-    private Set<Lote> lotes;
+    private Set<Lote> lotesAdjudicados;
 
-    //Constructor
+    // Constructor
     public Pujador(String nombre) {
         this.nombre = nombre;
-        this.lotes = new HashSet<>();
+        this.lotesAdjudicados = new HashSet<>();
     }
 
-    //Getters
+    // Getters
     public String getNombre() {
         return nombre;
     }
 
-    public Set<Lote> getLotes() {
-        return lotes;
+    public Set<Lote> getLotesAdjudicados() {
+        return lotesAdjudicados;
     }
 
-    //Setters
+    // Setters
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    //Setter para añadir lotes
-    public void addLotes(Lote lote) {
-        this.lotes.add(lote);
+    // Método para realizar una puja
+    public void pujar(Lote lote, double cantidad) {
+        if (cantidad > lote.getPujaMasAlta()) {
+            lote.registrarPuja(this, cantidad);
+        }
+    }
+
+    // Método para añadir lotes adjudicados
+    public void addLoteAdjudicado(Lote lote) {
+        this.lotesAdjudicados.add(lote);
     }
 }

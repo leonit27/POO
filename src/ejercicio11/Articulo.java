@@ -5,14 +5,14 @@ public class Articulo {
     private double precio;
     private Lote lote;
 
-    //Constructor
+    // Constructor
     public Articulo(String nombre, double precio, Lote lote) {
         this.nombre = nombre;
         this.precio = precio;
         this.lote = lote;
     }
 
-    //Getters
+    // Getters
     public String getNombre() {
         return nombre;
     }
@@ -21,11 +21,11 @@ public class Articulo {
         return precio;
     }
 
-    public int getLote() {
-        return lote.getNumero();
+    public Lote getLote() {
+        return lote;
     }
 
-    //Setters
+    // Setters
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }

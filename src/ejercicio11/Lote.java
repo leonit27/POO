@@ -7,17 +7,18 @@ public class Lote {
     private int numero;
     private double precioSalida;
     private Set<Articulo> articulos;
-    private Pujador pujador;
-    private Subasta subasta;
+    private Pujador pujadorAdjudicado;
+    private double pujaMasAlta;
 
-    //Constructor
+    // Constructor
     public Lote(int numero, double precioSalida) {
         this.numero = numero;
         this.precioSalida = precioSalida;
         this.articulos = new HashSet<>();
+        this.pujaMasAlta = precioSalida; // Inicialmente, la puja más alta es el precio de salida
     }
 
-    //Getters
+    // Getters
     public int getNumero() {
         return numero;
     }
@@ -30,15 +31,15 @@ public class Lote {
         return articulos;
     }
 
-    public String getPujador() {
-        return pujador.getNombre();
+    public Pujador getPujadorAdjudicado() {
+        return pujadorAdjudicado;
     }
 
-    public String getSubasta() {
-        return "El día de la subasta es" + subasta.getDiaSubasta();
+    public double getPujaMasAlta() {
+        return pujaMasAlta;
     }
 
-    //Setters
+    // Setters
     public void setNumero(int numero) {
         this.numero = numero;
     }
@@ -47,16 +48,23 @@ public class Lote {
         this.precioSalida = precioSalida;
     }
 
-    public void setPujador(Pujador pujador) {
-        this.pujador = pujador;
-    }
-
-    public void setSubasta(Subasta subasta) {
-        this.subasta = subasta;
-    }
-
-    //Setter para añadir articulos
-    public void addArticulos(Articulo articulo) {
+    // Método para añadir artículos
+    public void addArticulo(Articulo articulo) {
         this.articulos.add(articulo);
+    }
+
+    // Método para registrar una puja
+    public void registrarPuja(Pujador pujador, double cantidad) {
+        if (cantidad > pujaMasAlta) {
+            pujaMasAlta = cantidad;
+            pujadorAdjudicado = pujador;
+        }
+    }
+
+    // Método para adjudicar el lote
+    public void adjudicar() {
+        if (pujadorAdjudicado != null) {
+            pujadorAdjudicado.addLoteAdjudicado(this);
+        }
     }
 }

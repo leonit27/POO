@@ -7,28 +7,47 @@ public class Subasta {
     private String diaSubasta;
     private Set<Lote> lotes;
 
-    //Constructor
+    // Constructor
     public Subasta(String diaSubasta) {
         this.diaSubasta = diaSubasta;
         this.lotes = new HashSet<>();
     }
 
-    //Getters
+    // Getters
     public String getDiaSubasta() {
-        return "El dia de la subasta es " + diaSubasta;
+        return diaSubasta;
     }
 
     public Set<Lote> getLotes() {
         return lotes;
     }
 
-    //Setters
+    // Setters
     public void setDiaSubasta(String diaSubasta) {
         this.diaSubasta = diaSubasta;
     }
 
-    //Setter para añadir lotes
-    public void addLotes(Lote lote) {
+    // Método para añadir lotes
+    public void addLote(Lote lote) {
         this.lotes.add(lote);
+    }
+
+    // Método para cerrar la subasta y adjudicar los lotes
+    public void cerrarSubasta() {
+        for (Lote lote : lotes) {
+            lote.adjudicar();
+        }
+    }
+
+    // Método para imprimir los resultados de la subasta
+    public void imprimirResultados() {
+        System.out.println("Resultados de la subasta del día " + diaSubasta);
+        for (Lote lote : lotes) {
+            Pujador pujador = lote.getPujadorAdjudicado();
+            String resultado = (pujador != null)
+                    ? "Lote " + lote.getNumero() + " adjudicado a: " + pujador.getNombre()
+                    : "Lote " + lote.getNumero() + " no adjudicado";
+            System.out.println(resultado);
+        }
     }
 }
