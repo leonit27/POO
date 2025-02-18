@@ -1,20 +1,18 @@
 package herencia.network;
 
+import java.util.Set;
+
 public class Publicacion {
-    private String ID;
+    public int ID;
+    private static int conID = 0;
 
     //Constructor
-    public Publicacion(String ID) {
-        this.ID = ID;
+    public Publicacion() {
+        this.ID = ++conID;
     }
 
     //Getters
-    public String getID() {
+    public int getID() {
         return ID;
-    }
-
-    //Setters
-    public void setID(String ID) {
-        this.ID = ID;
     }
 }
